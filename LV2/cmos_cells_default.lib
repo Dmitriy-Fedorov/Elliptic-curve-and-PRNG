@@ -1,0 +1,53 @@
+// test comment
+/* test comment */
+library(demo) {
+  /*cell(a2UF) {
+    area: 6;
+    pin(a) { direction: input; }
+    pin(y) { direction: output;
+              function: "a"; }
+  }*/
+  cell(inverter) {
+    area: 3;
+    pin(a) { direction: input; }
+    pin(y) { direction: output;
+              function: "a'"; }
+  }
+  cell(nand2) {
+    area: 4;
+    pin(a1) { direction: input; }
+    pin(a2) { direction: input; }
+    pin(y) { direction: output;
+             function: "(a1*a2)'"; }
+  }
+  cell(nor2) {
+    area: 4;
+    pin(a1) { direction: input; }
+    pin(a2) { direction: input; }
+    pin(y) { direction: output;
+             function: "(a1+a2)'"; }
+  }
+ /* cell(DFF) {
+    area: 18;
+    ff(IQ, IQN) { clocked_on: C;
+                  next_state: D; }
+    pin(C) { direction: input;
+                 clock: true; }
+    pin(D) { direction: input; }
+    pin(Q) { direction: output;
+              function: "IQ"; }
+  }*/
+  cell(rdff) {
+    area: 18;
+    ff("IQ", "IQN") { clocked_on: ck;
+					   next_state: d;
+                       clear: reset; }
+    pin(c) { direction: input;
+                 clock: true; }
+    pin(d) { direction: input; }
+    pin(q) { direction: output;
+              function: "IQ"; }
+    pin(reset) { direction: input; }
+    ; // empty statement
+  }
+}

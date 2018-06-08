@@ -1,0 +1,72 @@
+// test comment
+/* test comment */
+library(demo) {
+	/*
+  cell(buf) {
+    area: 6;
+    pin(a) { direction: input; }
+    pin(y) { direction: output;
+              function: "a"; }
+  }*/
+
+  cell(inv) {
+    area: 3;
+    pin(a) { direction: input; }
+    pin(y) { direction: output;
+              function: "a'"; }
+  }
+  cell(nand2) {
+    area: 4;
+    pin(a) { direction: input; }
+    pin(b) { direction: input; }
+    pin(y) { direction: output;
+             function: "(a*b)'"; }
+  }
+  cell(nor2) {
+    area: 4;
+    pin(a) { direction: input; }
+    pin(b) { direction: input; }
+    pin(y) { direction: output;
+             function: "(a+b)'"; }
+  }
+  /*
+  cell(flop) {
+    area: 18;
+    ff(IQ, IQN) { clocked_on: c;
+                  next_state: d; }
+    pin(c) { direction: input;
+                 clock: true; }
+    pin(d) { direction: input; }
+    pin(q) { direction: output;
+              function: "IQ"; }
+  }*/
+  cell(rdff) {
+    area: 18;
+    ff("IQ", "IQN") { clocked_on: ck;
+					   next_state: d;
+                       clear: reset; }
+    pin(c) { direction: input;
+                 clock: true; }
+    pin(d) { direction: input; }
+    pin(q) { direction: output;
+              function: "IQ"; }
+    pin(reset) { direction: input; }
+    ; // empty statement
+  }
+  /*
+  cell(DFFSR) {
+    area: 18;
+    ff("IQ", "IQN") { clocked_on: ck;
+					  next_state: d;
+                      preset: s;
+                       clear: reset; }
+    pin(ck) { direction: input;
+                 clock: true; }
+    pin(d) { direction: input; }
+    pin(Q) { direction: output;
+              function: "IQ"; }
+    pin(S) { direction: input; }
+    pin(R) { direction: input; }
+    ; // empty statement
+  }*/
+}

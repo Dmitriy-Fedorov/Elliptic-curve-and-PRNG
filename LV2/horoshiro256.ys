@@ -1,0 +1,6 @@
+read_verilog xoroshiro128.v xoroshiro256.v
+synth -top xoroshiro256 -flatten
+opt
+dfflibmap -liberty cmos_cells_default.lib
+abc -liberty cmos_cells_default.lib
+write_verilog -noattr -renameprefix DFed_ lv2_xoroshiro256.v

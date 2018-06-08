@@ -1,0 +1,1 @@
+yosys eliptic_group.ys > log.txt

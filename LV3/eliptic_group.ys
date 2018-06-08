@@ -1,0 +1,6 @@
+read_verilog eliptic.v ROM_mod17.v mod17.v
+synth -top eliptic -flatten
+opt
+dfflibmap -liberty cmos_cells_my.lib
+abc -liberty cmos_cells_my.lib
+write_verilog -noattr -renameprefix DFed_ lv3_eliptic.v
